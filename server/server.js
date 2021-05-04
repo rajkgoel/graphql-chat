@@ -1,4 +1,5 @@
 const fs = require('fs');
+const http = require('http');
 const { ApolloServer } = require('apollo-server-express');
 const cors = require('cors');
 const express = require('express');
@@ -40,4 +41,6 @@ app.post('/login', (req, res) => {
   res.send({token});
 });
 
+const httpServer = http.createServer(app);
+apolloServer.installSubscriptionHandlers(httpServer);
 app.listen(port, () => console.log(`Server started on port ${port}`));
