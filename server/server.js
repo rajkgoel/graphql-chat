@@ -43,4 +43,4 @@ app.post('/login', (req, res) => {
 
 const httpServer = http.createServer(app);
 apolloServer.installSubscriptionHandlers(httpServer);
-app.listen(port, () => console.log(`Server started on port ${port}`));
+httpServer.listen(port, () => console.log(`Server started on port ${port}`));
